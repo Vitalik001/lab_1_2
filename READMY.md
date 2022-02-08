@@ -16,7 +16,7 @@ To start mudule you have to write down in your terminal this line:
 Examples:
 >>> python3 main.py 2009 49.841952 24.0315921 locations2.list
 
-![example]('https://github.com/Vitalik001/lab_1_2/blob/main/example.png')
+![example](example.png)
 
 
 
