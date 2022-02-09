@@ -99,10 +99,18 @@ def create_map(user_coordinates, films):
     '''
     creates the map with markers of films
     '''
+    cities=['Kyiv','Kharkiv','Donetsk','Odessa','Dnipro','Zaporizhzhya','Lviv','Kryvyi Rih']
     mapp=folium.Map(location=user_coordinates, zoom_start=3)
     group=folium.FeatureGroup(name='nearest Films')
+    group2=folium.FeatureGroup(name='Ukraine cities')
     mapp.add_child(group)
+    mapp.add_child(group2)
+    marker_cluster2=MarkerCluster().add_to(group2)
     marker_cluster = MarkerCluster().add_to(group)
+    for city in cities:
+        folium.Marker(location=get_coordinates(city), popup=city,\
+ icon=folium.Icon(color='darkblue', icon_color='white', icon='city',\
+ angle=0, prefix='fa')).add_to(marker_cluster2)
     for film in films:
         latitude=float(film.split(':')[-2].strip().split(',')[0][1:])
         longitude=float(film.split(':')[-2].strip().split(',')[1][:-1])
